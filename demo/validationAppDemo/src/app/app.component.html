@@ -1,0 +1,39 @@
+<h1>Angular Router: </h1>
+<nav>
+  <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a>
+  <a [routerLink]="['/crisis-center', 1]">Dragon Crisis</a>
+  <a [routerLink]="['/crisis-center/2']">Shark Crisis</a>
+  <a routerLink="/superheroes" routerLinkActive="active">Heroes</a>
+  <a routerLink="/admin" routerLinkActive="active">Admin</a>
+  <a routerLink="/login" routerLinkActive="active">Login</a>
+  <a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
+  <a [routerLink]="[{ outlets: { pop: ['compose'] } }]">Contact2</a>
+</nav>
+<div [@routeAnimation]="getAnimationData(routerOutlet)">
+  <router-outlet #routerOutlet="outlet"></router-outlet>
+</div>
+<router-outlet name="popup"></router-outlet>
+<router-outlet name="pop"></router-outlet>
+<hr>
+<hr>
+<div>
+  <h2>Job Application for Heroes</h2>
+  <app-dynamic-form [questions]="questions"></app-dynamic-form>
+</div>
+<hr>
+<div class="zippy">
+  <div (click)="toggle()">Toggle</div>
+  <div [hidden]="!visible">
+    <div>content</div>
+  </div>
+</div>
+<hr>
+<div *ngIf="time"><code>observable|async</code>:
+  Time: {{ time | async }}</div>
+
+<form [formGroup]="heroForm">
+  <div class="form-group">
+    <input class="form-control" type="text" id="name" name="name" [(ngModel)]="name" formControlName='name'>
+  </div>
+</form>
+<div>{{nameChangeLog | json}}</div>

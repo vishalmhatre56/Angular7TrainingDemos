@@ -1,0 +1,61 @@
+<hr>
+<p *ngIf="true">
+  Expression is true and ngIf is true.
+  This paragraph is in the DOM.
+</p>
+<p *ngIf="false">
+  Expression is false and ngIf is false.
+  This paragraph is not in the DOM.
+</p>
+<hr>
+<p>Hip!</p>
+<ng-template>
+  <p>Hip!</p>
+</ng-template>
+<p>Hooray!</p>
+<hr>
+<p>
+  The condition is currently
+  <span [ngClass]="{ 'a': !condition, 'b': condition, 'unless': true }">{{condition}}</span>.
+  <button
+    (click)="condition = !condition"
+    [ngClass] = "{ 'a': condition, 'b': !condition }" >
+    Toggle condition to {{condition ? 'false' : 'true'}}
+  </button>
+</p>
+
+
+<p *appUnless="condition">Show this sentence unless the condition is true.</p>
+<p *appUnless="condition" class="unless a">
+  (A) This paragraph is displayed because the condition is false.
+</p>
+
+<p *appUnless="!condition" class="unless b">
+  (B) Although the condition is true,
+  this paragraph is displayed because appUnless is set to false.
+</p>
+<hr>
+<h1>PIPE:</h1>
+<hr>
+<p> Raw date = {{ birthday }}</p>
+<p>The hero's birthday is {{ birthday | date }}</p>
+<p>The hero's birthday is {{ birthday | date:"MM/dd/yy" }} </p>
+<p>The hero's birthday is {{ birthday | date:format }}</p>
+<button (click)="toggleFormat()">Toggle Format</button>
+<p>The chained hero's birthday is
+  {{ birthday | date:'fullDate' | uppercase}}</p>
+<hr>
+<hr>
+<h2>Power Boost Calculator:</h2>
+<div>Number power:<input [(ngModel)]="power"></div>
+<div>Boost Factor:<input [(ngModel)]="factor"></div>
+<p>Super power boost: {{power | exponentialStrength: factor}}</p>
+<hr>
+<app-name-editor></app-name-editor>
+<hr>
+<h4>app-profile-editor</h4>
+<app-profile-editor></app-profile-editor>
+<hr>
+<h4>app-super-hero-form</h4>
+<app-super-hero-form></app-super-hero-form>
+<hr>

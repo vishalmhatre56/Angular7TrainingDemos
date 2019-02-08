@@ -1,0 +1,16 @@
+
+<br><br>  
+<div *ngIf="isVisible">
+  <button (click)="hide()">
+    Approve
+  </button>
+</div>
+<div *ngIf="!isVisible">
+  <button (click)="isVisible=true; message='please approve appointment.'">
+    check for requests
+  </button>
+</div>
+
+<div @shrinkOut *ngIf="isVisible" class="open-close-container" >
+  {{message}}
+</div>

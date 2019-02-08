@@ -1,0 +1,21 @@
+
+<div>
+  <app-ad-banner [ads]="ads"></app-ad-banner>
+</div>
+<h1>My First Attribute Directive</h1>
+
+<h4>Pick a highlight color</h4>
+<div>
+  <input type="radio" name="colors" (click)="color='lightgreen'">Green
+  <input type="radio" name="colors" (click)="color='yellow'">Yellow
+  <input type="radio" name="colors" (click)="color='cyan'">Cyan
+</div>
+<h2 [appHighlight]="color" defaultColor="orange">Mission Control</h2>
+<!-- <appHighlight [highlightColor]="color" defaultColor="orange">Mission Control</appHighlight> -->
+<button (click)="announce()">Announce mission</button>
+<app-astronaut *ngFor="let astronaut of astronauts" [astronaut]="astronaut">
+</app-astronaut>
+<h3>History:</h3>
+<ul>
+  <li *ngFor="let event of history">{{event}}</li>
+</ul>
